@@ -1,10 +1,18 @@
+
 const express = require("express");
 const jwt = require("jsonwebtoken")
 const app = express();
 
-const SECRET_KEY = 'supersecretadmin';
-const JWT_SECRET = 'your_jwt_secret';
+const SECRET_KEY = "supersecretadmin";
+const JWT_SECRET = "your_jwt_secret";
 
+const corsOptions = {
+  origin: "*", 
+  credentials: true,
+  optionSuccessStatus: 200, 
+};
+const cors = require("cors")
+app.use(cors(corsOptions)); 
 app.use(express.json());
 
 const verifyJWT = (req, res, next) => {
