@@ -17,7 +17,7 @@ app.use(express.json());
 
 const verifyJWT = (req, res, next) => {
     const token = req.headers["authorization"];
-    if (!token) return res.status(401).json({Message: "No token is provided"});
+    if (!token) return res.status(401).json({token});
 
     try{
         // console.log(token);
