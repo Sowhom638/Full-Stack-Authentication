@@ -1,4 +1,4 @@
-const User = require("../models/user.model")
+const User = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
@@ -33,7 +33,10 @@ async function loginUser(req, res) {
         const isPasswordValid = await bcrypt.compare(password, storedHashedPassword);
 
         if (isPasswordValid) {
-            const token = jwt.sign({ role: "admin" }, process.env.JWT_SECRET, { expiresIn: "24h" });
+            const token = jwt.sign({
+                id: user._id,     // 👈 include user ID
+                role: "user"
+            }, process.env.JWT_SECRET, { expiresIn: "24h" });
             return res.status(200).json({ token });
         } else {
             return res.status(404).json({ message: "User doesn't exist" });
@@ -42,7 +45,44 @@ async function loginUser(req, res) {
         return res.status(400).json({ message: 'Error while login the user', error });
     }
 }
+async function getAllUser(req, res) {
+    try {
+        const users = await User.find();
+        if (users.length > 0) {
+            return res.status(200).json({ message: "Users are found", users });
+        } else {
+            return res.status(404).json({ message: "Users are not found" });
+        }
+    } catch (error) {
+        return res.status(400).json({ message: "Error while fetching users" });
+    }
+}
+async function getMe(req, res) {
+  try {
+    // req.user is set by verifyJWT middleware
+    const userId = req.user.id;
+
+    const user = await User.findById(userId).select('-password'); // exclude password
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    return res.status(200).json({
+      message: "User details retrieved",
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+      }
+    });
+  } catch (error) {
+    return res.status(400).json({ message: "Error fetching user details", error: error.message });
+  }
+}
 module.exports = {
     createUser,
-    loginUser
+    loginUser,
+    getAllUser,
+    getMe
 }

@@ -7,6 +7,7 @@ import Login from './pages/Login.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import TaskForm from './pages/TaskForm.jsx'
+import ProjectForm from './pages/ProjectForm.jsx'
  
 const router = createBrowserRouter([
   {
@@ -26,6 +27,14 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <Dashboard />
+      </ProtectedRoute>
+    )
+  },
+  {
+    path: "/projectForm",
+    element: (
+      <ProtectedRoute>
+        <ProjectForm />
       </ProtectedRoute>
     )
   },

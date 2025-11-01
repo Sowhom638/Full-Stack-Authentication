@@ -16,6 +16,12 @@ const useFetch = (url) => {
             const response = await fetch(url, {
                 headers: headers
             })
+            if (response.status === 401) {
+                // Token is expired/invalid → log out
+                localStorage.removeItem('loginToken'); // Removing expired token from localstorage
+                navigate('/login', { replace: true });
+                return;
+            }
             if (!response.ok) {
                 throw new Error("Failed to fetch data");
 
