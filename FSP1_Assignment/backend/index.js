@@ -9,6 +9,8 @@ const {connectDB} = require('./db/db.connect');
 const userRoutes = require('./routes/user.route');
 const projectRoutes = require('./routes/project.route');
 const tagRoutes = require('./routes/tag.route');
+const teamRoutes = require('./routes/team.route');
+const taskRoutes = require('./routes/task.route');
 
 connectDB();
 
@@ -24,6 +26,8 @@ app.use(cors(corsOptions));
 app.use('/auth', userRoutes);
 app.use('/projects', projectRoutes);
 app.use('/tags', tagRoutes);
+app.use('/teams', teamRoutes);
+app.use('/tasks', taskRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

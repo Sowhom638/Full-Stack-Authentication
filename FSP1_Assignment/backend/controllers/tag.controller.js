@@ -53,4 +53,4 @@ async function getAllTag(req, res) {
 module.exports = {
     createTag,
     getAllTag
-}
+};
