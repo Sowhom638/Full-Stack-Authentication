@@ -1,0 +1,7 @@
+1   2024-10-23 14:32:05 [PID: 1234] [TID: 5678] [TAG: INFO] [PACKAGE: app.module] [PRI: Application started successfully].
+2   2024-10-23 14:32:06 [PID: 1234] [TID: 5678] [TAG: WARNING] [PACKAGE: app.module] [PR WARNING Low disk space warning].
+3   2024-10-23 14:32:07 [PID: 1234] [TID: 5678] [TAG: ERROR] [PACKAGE: app.module] [PR Failed to connect to database].
+4   2024-10-23 14:32:08 [PID: 1234] [TID: 5678] [TAG: DEBUG] [PACKAGE: app.module] [PR Debugging user login process].
+5   2024-10-23 14:32:09 [PID: 1234] [TID: 5678] [TAG: FATAL] [PACKAGE: app.module] [PR Unhandled exception occurred. Shutting down].6   2024-10-23 14:32:09 [PID: 1234] [TID: 5678] [TAG: SUCCESS] [PACKAGE: app.module] [PR successfully printed data].
+ 6   2024-10-23 14:32:09 [PID: 1234] [TID: 5678] [TAG: SUCCESS] [PACKAGE: app.module] [PR successfully printed data].
+6   2024-10-23 14:32:09 [PID: 1234] [TID: 5678] [TAG: SUCCESS] [PACKAGE: app.module] [PR successfully printed data].
