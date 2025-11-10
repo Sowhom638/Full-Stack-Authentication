@@ -15,7 +15,7 @@ try {
   const csv = json2CsvParser.parse(data);
 
   // write the csv data to file
-  const csvFilePath = path.join(__dirname, "convertedData.csv");
+  const csvFilePath = path.join(__dirname, "convertedData.csv"); // csv file paths
   fs.writeFileSync(csvFilePath, csv);
   console.log("Conversion Successful");
 } catch (error) {
